@@ -1,5 +1,11 @@
-from typing import List
-from app.lexicon import LEXICON
+from typing import Dict, List
+from web_parser.app.messages import LEXICON
+
+
+__LastMessage: Dict[str, str] = {
+    'ok':  LEXICON['save_ok'],
+    'bad': LEXICON['save_bad'],
+}
 
 
 def decorate_greetings_user() -> None:
@@ -49,7 +55,7 @@ def send_message_out() -> None:
     print()
     print(text_system)
     print()
-    print(LEXICON['message_out'].strip())
+    print(LEXICON['message_out'])
     print()
     print('-' * len(text_system))
 
@@ -67,13 +73,7 @@ def printed_result(result: tuple | None) -> None:
     print()
     if result is None:
         print(LEXICON['result_bad'])
-    elif result[0] == 'Bad':
-        print(LEXICON['save_bad'])
-        print()
-        print(result[1])
-        print()
-        print('---- end ----')
-    elif result[0] == 'OK':
-        print(LEXICON['save_ok'])
+    else:
+        print(__LastMessage[result[0].lower()])
         print(result[1])
         print('---- end ----')

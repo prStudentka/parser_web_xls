@@ -1,9 +1,9 @@
 import os
+from datetime import date
 from openpyxl import Workbook
 from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.styles import Font, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
-from datetime import date
 from typing import List
 
 
